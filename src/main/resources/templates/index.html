@@ -20,5 +20,24 @@
         <a class="nav-link" href="/login">Login</a>
     </button>
 </nav>
+<div align="center">
+    <h1>Games</h1>
+    <a href="/new">Enter New Sale</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="game : ${list}">
+            <td th:text="${game.name}">Name</td>
+            <td th:text="${game.genre}">Genre</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
