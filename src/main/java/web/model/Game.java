@@ -17,6 +17,7 @@ public class Game {
     public Game(){
 
     }
+
     public Game(String name, String rDate, String genre, String console, String dev, String pub){
         this.name = name;
         this.console = console;

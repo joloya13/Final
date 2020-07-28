@@ -22,7 +22,17 @@ public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @RequestMapping("/")
-    public String get(){
+    public String index(){
+        return "index";
+    }
+
+    @RequestMapping("/login")
+    public String login(){
+        return "index";
+    }
+
+    @RequestMapping("/recommendation")
+    public String recommendation(){
         return "index";
     }
 
@@ -32,7 +42,7 @@ public class HomeController {
      * @return String - name of the template html page
      */
     @RequestMapping("/game")
-    public String index(Model model){
+    public String game(Model model){
         List<Game> list = gameDAO.list();
         logger.debug("worker");
         model.addAttribute("list",list); //assigns the list to the model which passes data to the page
