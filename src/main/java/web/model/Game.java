@@ -3,7 +3,7 @@ package web.model;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class Game {
-
+    //columns from the database
     private String name;
     private String rDate;
     private String genre;
@@ -11,6 +11,9 @@ public class Game {
     private String dev;
     private String pub;
 
+    /**
+     * Default constructor
+     */
     public Game(){
 
     }
@@ -69,12 +72,5 @@ public class Game {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String toString(){
-        return String.format(
-                "Game[name='%s', genre ='%s']", name, genre
-
-        );
     }
 }

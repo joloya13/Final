@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class GameDAO {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate; //this interacts with the database. Autowired makes it static. No need to instantiate
 
     public List<Game> list(){
-        String q = "Select * from game limit 20";
+        String q = "Select * from game where name like 'c%' limit 50"; //String query
 
-        List<Game> list = jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Game.class));
+        List<Game> list = jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Game.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
 
         return list;
     }
