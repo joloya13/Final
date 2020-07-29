@@ -36,8 +36,8 @@ public class GenreDAO {
      * @return jdbcTemplate.query The console from the table, if it exists.
      */
 
-    public Genre getConsole(String genreId) {
-        String q = "Select name from console where consoleName  = ?"; //String query
+    public Genre getGenre(String genreId) {
+        String q = "Select * from genre where genreId  = ?"; //String query
 
         return  (Genre) jdbcTemplate.query(q,new Object[]{genreId}, BeanPropertyRowMapper.newInstance(Genre.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
     } // getConsole
@@ -49,7 +49,7 @@ public class GenreDAO {
      */
 
     public List<Genre> list(){
-        String q = "Select * from console"; //String query
+        String q = "Select * from genre"; //String query
 
         List<Genre> list = jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Genre.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
 

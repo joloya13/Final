@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<form action="#" th:action="@{/recommend}" th:object="${game}" method="post">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="console">Console</label>
+        </div>
+        <select class="custom-select" id="console" >
+            <option selected>Choose...</option>
+            <th:block th:each="con : ${console}">
+                <option th:value="${con.getConsoleName()}" th:text="${con.getConsoleName()}" th:field="${game.console}"></option>
+            </th:block>
+        </select>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="genreLike">Favorite Genre</label>
+        </div>
+        <select class="custom-select" id="genreLike">
+            <option selected>Choose...</option>
+            <th:block th:each="gen : ${genre}">
+                <option th:value="${gen.getGenreId()}" th:text="${gen.getGenreName()}" th:name="${game.genre}"></option>
+            </th:block>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</form>
+
+</body>
+</html>

@@ -7,13 +7,12 @@ package web.controller;
  * @author Jonathan Oloya
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import web.WebApplication;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import web.dao.ConsoleDAO;
 import web.dao.GenreDAO;
 import web.model.Game;
@@ -72,10 +71,17 @@ public class HomeController {
      * for recommendations for the user.
      */
 
-    @RequestMapping("/recommendation")
-    public String recommendation(Model model){
+    @RequestMapping("/search")
+    public String search(Model model){
         model.addAttribute("console", consoleDAO.list());
         model.addAttribute("genre",genreDAO.list());
+        model.addAttribute("game", new Game());
+        return "search";
+    }
+
+    @RequestMapping("/recommend")
+    public String recommendation(Model model){
+        //System.out.println(genre);
         return "recommend";
     }// recommendation
 

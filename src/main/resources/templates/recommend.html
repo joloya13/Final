@@ -15,31 +15,14 @@
 
 </head>
 <body>
+<nav class="nav justify-content-end">
+    <button type="button" class="btn btn-light">
+        <a class="nav-link" href="/login">Login</a>
+    </button>
+</nav>
 
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="console">Console</label>
-    </div>
-    <select class="custom-select" id="console" >
-        <option selected>Choose...</option>
-        <th:block th:each="con : ${console}">
-            <option th:value="${con.getConsoleName()}" th:text="${con.getConsoleName()}"></option>
-        </th:block>
-    </select>
-</div>
-
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="genreLike">Favorite Genre</label>
-    </div>
-    <select class="custom-select" id="genreLike">
-        <option selected>Choose...</option>
-        <th:block th:each="gen : ${genre}">
-            <option th:value="${gen.getGenreId()}" th:text="${gen.getGenreName()}"></option>
-        </th:block>
-    </select>
-</div>
-
+<p th:text="'genre: ' " />
+<p th:text="'console: ' " />
 
 </body>
 </html>
