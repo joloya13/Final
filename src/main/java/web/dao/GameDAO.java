@@ -48,7 +48,7 @@ public class GameDAO {
 
     public List<Game> list(GenreConsole genreConsole){
 
-        String q = String.format("Select * from game where genreId = '%d' and gameId in (select Game_gameId from port where Console_consoleName = '%s')",genreConsole.getGenre(),genreConsole.getConsole() ); //String query
+        String q = String.format("Select * from game where Genre_genreId = '%d' and gameId in (select Game_gameId from port where Console_consoleName = '%s')",genreConsole.getGenre(),genreConsole.getConsole() ); //String query
 
         List<Game> list = jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Game.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
 

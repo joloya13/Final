@@ -22,11 +22,18 @@ public class Game {
     private String gameName;
     private int rDate;
     private double score;
-    private int dev;
-    private int pub;
-    private int genre;
+    private int Developer_developerId;
+    private int Publisher_publisherId;
+    private int Genre_genreId;
+    private String Genre_genreName;
 
+    public String getGenre_genreName() {
+        return Genre_genreName;
+    }
 
+    public void setGenre_genreName(String genre_genreName) {
+        Genre_genreName = genre_genreName;
+    }
 
     /**
      * Default constructor
@@ -37,6 +44,29 @@ public class Game {
     }// Game
 
 
+    public int getDeveloper_developerId() {
+        return Developer_developerId;
+    }
+
+    public void setDeveloper_developerId(int developer_developerId) {
+        Developer_developerId = developer_developerId;
+    }
+
+    public int getPublisher_publisherId() {
+        return Publisher_publisherId;
+    }
+
+    public void setPublisher_publisherId(int publisher_publisherId) {
+        Publisher_publisherId = publisher_publisherId;
+    }
+
+    public int getGenre_genreId() {
+        return Genre_genreId;
+    }
+
+    public void setGenre_genreId(int genre_genreId) {
+        Genre_genreId = genre_genreId;
+    }
 
     /**
      * A constructor to create a game object with chosen attributes.
@@ -54,9 +84,9 @@ public class Game {
         this.gameName = gameName;
         this.rDate = rDate;
         this.score = score;
-        this.dev = dev;
-        this.pub = pub;
-        this.genre = genre;
+        this.Developer_developerId = dev;
+        this.Publisher_publisherId = pub;
+        this.Genre_genreId = genre;
     } // Game
 
 
@@ -74,10 +104,6 @@ public class Game {
 
     public void setScore(double score) {
         this.score = score;
-    }
-
-    public void setPub(int pub) {
-        this.pub = pub;
     }
 
     /**
@@ -99,57 +125,6 @@ public class Game {
     public void setrDate(int rDate) {
         this.rDate = rDate;
     } // setrDate
-
-    /**
-     * Getter method for genre.
-     *
-     * @return genre The genre of the game.
-     */
-
-    public int getGenre() {
-        return genre;
-    } // getGenre
-
-    /**
-     * Setter method for genre.
-     *
-     * @param genre The genre of the game.
-     */
-
-    public void setGenre(int genre) {
-        this.genre = genre;
-    } // setGenre
-
-
-    /**
-     * Getter method for developer
-     *
-     * @return dev The developer of the game
-     */
-
-    public int getDev() {
-        return dev;
-    } // getDev
-
-    /**
-     * Setter method for developer
-     *
-     * @param dev The developer of the game
-     */
-
-    public void setDev(int dev) {
-        this.dev = dev;
-    } // setDev
-
-    /**
-     * Getter method for publisher
-     *
-     * @return pub The publisher of the game.
-     */
-
-    public int getPub() {
-        return pub;
-    } // getPub
 
     /**
      * Setter method for publisher

@@ -21,8 +21,6 @@
     </button>
 </nav>
 
-<p th:text="' genre ' + ${genreConsole.genre}" />
-<p th:text="' console ' + ${genreConsole.getConsole()}" />
 <div align="center">
     <h1>Games</h1>
     <a href="/new">Recommended Games</a>
@@ -37,11 +35,11 @@
         <tbody>
         <tr th:each="game : ${games}">
             <td th:text="${game.gameName}">Name</td>
-            <td th:text="${game.genre}">Genre</td>
+            <td th:text="${game.genre_genreId}">Genre</td>
             <td th:text="${game.score}">Score</td>
             <td th:text="${game.rDate}">Date</td>
-            <td th:text="${game.dev}">Name</td>
-            <td th:text="${game.pub}">Genre</td>
+            <td th:text="${game.developer_developerId}">Name</td>
+            <td th:text="${game.publisher_publisherId}">Genre</td>
         </tr>
         </tbody>
     </table>

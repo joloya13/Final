@@ -37,10 +37,10 @@ public class GenreDAO {
      * @return jdbcTemplate.query The console from the table, if it exists.
      */
 
-    public Genre getGenre(String genreId) {
+    public List<Genre> getGenre(int genreId) {
         String q = "Select * from genre where genreId  = ?"; //String query
 
-        return  (Genre) jdbcTemplate.query(q,new Object[]{genreId}, BeanPropertyRowMapper.newInstance(Genre.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
+        return jdbcTemplate.query(q,new Object[]{genreId}, BeanPropertyRowMapper.newInstance(Genre.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
     } // getConsole
 
     /**

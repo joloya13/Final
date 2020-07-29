@@ -86,6 +86,7 @@ public class HomeController {
     public String recommendation(@ModelAttribute("genreConsole") GenreConsole genreConsole, Model model){
             System.out.println(genreConsole.getConsole());
             model.addAttribute("games", gameDAO.list(genreConsole));
+            model.addAttribute("genre", genreDAO.getGenre(genreConsole.getGenre()));
             return "recommend";
     }// recommendation
 
