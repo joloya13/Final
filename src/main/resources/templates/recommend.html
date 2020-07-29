@@ -20,11 +20,11 @@
     <div class="input-group-prepend">
         <label class="input-group-text" for="console">Console</label>
     </div>
-    <select class="custom-select" id="console">
+    <select class="custom-select" id="console" >
         <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <th:block th:each="con : ${console}">
+            <option th:value="${con.getConsoleName()}" th:text="${con.getConsoleName()}"></option>
+        </th:block>
     </select>
 </div>
 
@@ -34,23 +34,12 @@
     </div>
     <select class="custom-select" id="genreLike">
         <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <th:block th:each="gen : ${genre}">
+            <option th:value="${gen.getGenreId()}" th:text="${gen.getGenreName()}"></option>
+        </th:block>
     </select>
 </div>
 
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="genreDisLike">least Genre</label>
-    </div>
-    <select class="custom-select" id="genreDisLike">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-</div>
 
 </body>
 </html>
