@@ -7,8 +7,6 @@ package web.model;
  * @author Jonathan Oloya
  */
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 /************************************************************************************
  * This class handles game objects outside of the database.
  *
@@ -17,13 +15,18 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 
 public class Game {
+
+
     //columns from the database
-    private String name;
-    private String rDate;
-    private String genre;
-    private String console;
-    private String dev;
-    private String pub;
+    private int gameId;
+    private String gameName;
+    private int rDate;
+    private double score;
+    private int dev;
+    private int pub;
+    private int genre;
+
+
 
     /**
      * Default constructor
@@ -33,25 +36,49 @@ public class Game {
 
     }// Game
 
+
+
     /**
      * A constructor to create a game object with chosen attributes.
      *
-     * @param name The name of the Game
+     * @param score The score of the game
+     * @param gameId Id of the game
+     * @param gameName The name of the Game
      * @param rDate The release date
      * @param genre The genre
-     * @param console The game's console
      * @param dev The developer of the game
      * @param pub The publisher of the game
      */
-
-    public Game(String name, String rDate, String genre, String console, String dev, String pub){
-        this.name = name;
-        this.console = console;
-        this.dev = dev;
+    public Game(int gameId, String gameName, int rDate, double score, int dev, int pub, int genre) {
+        this.gameId = gameId;
+        this.gameName = gameName;
         this.rDate = rDate;
-        this.genre = genre;
+        this.score = score;
+        this.dev = dev;
         this.pub = pub;
+        this.genre = genre;
     } // Game
+
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public void setPub(int pub) {
+        this.pub = pub;
+    }
 
     /**
      * Getter method for release date.
@@ -59,7 +86,7 @@ public class Game {
      * @return rDate The release date of the game.
      */
 
-    public String getrDate() {
+    public int getrDate() {
         return rDate;
     } // getrDate
 
@@ -69,7 +96,7 @@ public class Game {
      * @param rDate The release date of the game.
      */
 
-    public void setrDate(String rDate) {
+    public void setrDate(int rDate) {
         this.rDate = rDate;
     } // setrDate
 
@@ -79,7 +106,7 @@ public class Game {
      * @return genre The genre of the game.
      */
 
-    public String getGenre() {
+    public int getGenre() {
         return genre;
     } // getGenre
 
@@ -89,29 +116,10 @@ public class Game {
      * @param genre The genre of the game.
      */
 
-    public void setGenre(String genre) {
+    public void setGenre(int genre) {
         this.genre = genre;
     } // setGenre
 
-    /**
-     * Getter method for console.
-     *
-     * @return console The console that the game plays on.
-     */
-
-    public String getConsole() {
-        return console;
-    } // getConsole
-
-    /**
-     * Setter method for console.
-     *
-     * @param console The name of the console that the game is on.
-     */
-
-    public void setConsole(String console) {
-        this.console = console;
-    } // setConsole
 
     /**
      * Getter method for developer
@@ -119,7 +127,7 @@ public class Game {
      * @return dev The developer of the game
      */
 
-    public String getDev() {
+    public int getDev() {
         return dev;
     } // getDev
 
@@ -129,7 +137,7 @@ public class Game {
      * @param dev The developer of the game
      */
 
-    public void setDev(String dev) {
+    public void setDev(int dev) {
         this.dev = dev;
     } // setDev
 
@@ -139,7 +147,7 @@ public class Game {
      * @return pub The publisher of the game.
      */
 
-    public String getPub() {
+    public int getPub() {
         return pub;
     } // getPub
 
@@ -149,9 +157,6 @@ public class Game {
      * @param pub The name of the publisher for the game.
      */
 
-    public void setPub(String pub) {
-        this.pub = pub;
-    } // setPub
 
     /**
      * Getter method for the name of the game
@@ -159,17 +164,17 @@ public class Game {
      * @return name The name of the game
      */
 
-    public String getName() {
-        return name;
+    public String getGameName() {
+        return gameName;
     } // getName
 
     /**
      * Setter method for naming the game
      *
-     * @param name The name of the game
+     * @param gameName The name of the game
      */
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
     } // setName
 } //Game
