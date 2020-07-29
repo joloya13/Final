@@ -23,6 +23,28 @@
 
 <p th:text="' genre ' + ${genreConsole.genre}" />
 <p th:text="' console ' + ${genreConsole.getConsole()}" />
-
+<div align="center">
+    <h1>Games</h1>
+    <a href="/new">Recommended Games</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="game : ${games}">
+            <td th:text="${game.name}">Name</td>
+            <td th:text="${game.genre}">Genre</td>
+            <td th:text="${game.console}">Name</td>
+            <td th:text="${game.rDate}">Genre</td>
+            <td th:text="${game.dev}">Name</td>
+            <td th:text="${game.pub}">Genre</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

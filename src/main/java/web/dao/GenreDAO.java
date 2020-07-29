@@ -27,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class GenreDAO {
 
+    @Autowired
     private JdbcTemplate jdbcTemplate; //this interacts with the database. Autowired makes it static. No need to instantiate
 
     /**

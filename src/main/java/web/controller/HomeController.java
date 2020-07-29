@@ -83,8 +83,9 @@ public class HomeController {
     }
 
     @RequestMapping("/recommend")
-    public String recommendation(@ModelAttribute("genreConsole") GenreConsole genreConsole){
+    public String recommendation(@ModelAttribute("genreConsole") GenreConsole genreConsole, Model model){
             System.out.println(genreConsole.getConsole());
+            model.addAttribute("games", gameDAO.list(genreConsole));
             return "recommend";
     }// recommendation
 
