@@ -17,7 +17,10 @@ import web.dao.ConsoleDAO;
 import web.dao.GenreDAO;
 import web.model.Game;
 import web.dao.GameDAO;
+import web.model.GenreConsole;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 import java.util.List;
 
 /************************************************************************************
@@ -73,16 +76,16 @@ public class HomeController {
 
     @RequestMapping("/search")
     public String search(Model model){
-        model.addAttribute("console", consoleDAO.list());
-        model.addAttribute("genre",genreDAO.list());
-        model.addAttribute("game", new Game());
+        model.addAttribute("consoles", consoleDAO.list());
+        model.addAttribute("genres",genreDAO.list());
+        model.addAttribute("genreConsole", new GenreConsole());
         return "search";
     }
 
     @RequestMapping("/recommend")
-    public String recommendation(Model model){
-        //System.out.println(genre);
-        return "recommend";
+    public String recommendation(@ModelAttribute("genreConsole") GenreConsole genreConsole){
+            System.out.println(genreConsole.getConsole());
+            return "recommend";
     }// recommendation
 
     /**

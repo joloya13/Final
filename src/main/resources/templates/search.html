@@ -16,27 +16,21 @@
 </head>
 <body>
 
-<form action="#" th:action="@{/recommend}" th:object="${game}" method="post">
+<form  action="#" th:action = "@{/recommend}" th:object="${genreConsole}" method="post">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <label class="input-group-text" for="console">Console</label>
         </div>
-        <select class="custom-select" id="console" >
-            <option selected>Choose...</option>
-            <th:block th:each="con : ${console}">
-                <option th:value="${con.getConsoleName()}" th:text="${con.getConsoleName()}" th:field="${game.console}"></option>
-            </th:block>
+        <select class="custom-select" id="console" th:field="*{console}">
+            <option th:each="con : ${consoles}" th:value="${con.consoleName}" th:text="${con.consoleName}">Choose...</option>
         </select>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <label class="input-group-text" for="genreLike">Favorite Genre</label>
+            <label class="input-group-text" for="genreLike" >Favorite Genre</label>
         </div>
-        <select class="custom-select" id="genreLike">
-            <option selected>Choose...</option>
-            <th:block th:each="gen : ${genre}">
-                <option th:value="${gen.getGenreId()}" th:text="${gen.getGenreName()}" th:name="${game.genre}"></option>
-            </th:block>
+        <select class="custom-select" id="genreLike" th:field="*{genre}">
+            <option th:each="gen : ${genres}" th:value="${gen.genreId}" th:text="${gen.genreName}">Choose...</option>
         </select>
     </div>
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>

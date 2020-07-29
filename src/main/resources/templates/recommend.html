@@ -21,8 +21,8 @@
     </button>
 </nav>
 
-<p th:text="'genre: ' " />
-<p th:text="'console: ' " />
+<p th:text="' genre ' + ${genreConsole.genre}" />
+<p th:text="' console ' + ${genreConsole.getConsole()}" />
 
 </body>
 </html>
