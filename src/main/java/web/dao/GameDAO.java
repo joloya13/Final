@@ -44,7 +44,15 @@ public class GameDAO {
         List<Game> list = jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Game.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
 
         return list;
-    }
+    } // list
+
+    /**
+     * A method to return a list of all the games that the user wants to see
+     * based off of their console and genre of choice.
+     *
+     * @param genreConsole An object that contains the genre and console specified by the user in search.html
+     * @return list A list of the parsed games.
+     */
 
     public List<Game> list(GenreConsole genreConsole){
 
@@ -53,7 +61,7 @@ public class GameDAO {
         List<Game> list = jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Game.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
 
         return list;
-    }
+    } // list
 
     /**
      * Saves the game into the tables.
