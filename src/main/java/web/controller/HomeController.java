@@ -10,17 +10,15 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.ConsoleDAO;
 import web.dao.GenreDAO;
+import web.dao.UserDAO;
 import web.model.Game;
 import web.dao.GameDAO;
 import web.model.GenreConsole;
+import web.model.User;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
 import java.util.List;
 
 /************************************************************************************
@@ -40,6 +38,8 @@ public class HomeController {
     private ConsoleDAO consoleDAO;
     @Autowired
     private GenreDAO genreDAO;
+    @Autowired
+    UserDAO userDAO;
 
 //    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -51,7 +51,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(){
-        return "index";
+        return "register";
     } // index
 
     /**
@@ -61,10 +61,23 @@ public class HomeController {
      * for logging in.
      */
 
-    @RequestMapping("/login")
-    public String login(){
-        return "index";
+    @RequestMapping("/register")
+    public String register(Model model){
+        User user = new User();
+        model.addAttribute("user",user);
+        model.addAttribute("console",consoleDAO.list());
+        model.addAttribute("genre",genreDAO.list());
+
+        return "register";
     } // login
+
+    @PostMapping("/register")
+    public String proceed(@ModelAttribute("user") User user, Model model){
+        System.out.println(user.getUserName());
+        userDAO.InsertUser(user);
+        model.addAttribute("games",gameDAO.list(user.getGenre_genreId()));
+        return "games";
+    }
 
     /**
      * Maps the recommendation page to the html.

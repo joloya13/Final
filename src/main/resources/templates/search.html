@@ -21,7 +21,7 @@
         <div class="input-group-prepend">
             <label class="input-group-text" for="console">Console</label>
         </div>
-        <select class="custom-select" id="console" th:field="*{console}">
+        <select class="custom-select" id="console" th:field="*{console}" >
             <option th:each="con : ${consoles}" th:value="${con.consoleName}" th:text="${con.consoleName}">Choose...</option>
         </select>
     </div>

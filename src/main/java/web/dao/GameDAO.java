@@ -46,12 +46,22 @@ public class GameDAO {
         return list;
     }
 
+    public List<Game> list(int genre){
+        String q = "Select * from game where Genre_genreId = "+genre+" limit 50"; //String query
+
+        List<Game> list = jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Game.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
+
+        return list;
+    }
+
     public List<Game> list(GenreConsole genreConsole){
 
         String q = String.format("Select * from game where Genre_genreId = '%d' and gameId in (select Game_gameId from port where Console_consoleName = '%s')",genreConsole.getGenre(),genreConsole.getConsole() ); //String query
 
         List<Game> list = jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Game.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
 
+        System.out.println(genreConsole.getConsole());
+        System.out.println(genreConsole.getGenre());
         return list;
     }
 
