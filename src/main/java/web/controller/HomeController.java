@@ -43,6 +43,16 @@ public class HomeController {
 
 //    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+    /**
+     * This method maps to the html page.
+     *
+     * @return "index" A string to be matched with the html.
+     */
+
+    @RequestMapping("/")
+    public String index(){
+        return "register";
+    } // index
 
     /**
      * Maps the login page to the html.
@@ -50,24 +60,8 @@ public class HomeController {
      * @return "index" A string to be matched with the html
      * for logging in.
      */
-    @RequestMapping("/login")
-    public String login(Model model){
-        User user = new User();
-        model.addAttribute("user",user);
 
-        return "login";
-    }
-
-
-    @PostMapping("/login")
-    public String login(@ModelAttribute("user") User user, Model model){
-        model.addAttribute("user",user);
-        if(userDAO.findUser(user) == null ) {
-            return "login";
-        }else return "search";
-    }
-
-    @RequestMapping(value={"", "/", "register"})
+    @RequestMapping("/register")
     public String register(Model model){
         User user = new User();
         model.addAttribute("user",user);
@@ -77,6 +71,15 @@ public class HomeController {
         return "register";
     } // login
 
+    /**
+     * This method will take the user to the register page where they can store their username,
+     * password, and favorite genre of video game.
+     *
+     * @param user The user object to store the data.
+     * @param model Data to be passed into the method with a method object.
+     * @return "games" The web link to the games that correspond with the
+     * user's preferred genre.
+     */
 
     @PostMapping("/register")
     public String proceed(@ModelAttribute("user") User user, Model model){
@@ -84,7 +87,7 @@ public class HomeController {
         userDAO.InsertUser(user);
         model.addAttribute("games",gameDAO.list(user.getGenre_genreId()));
         return "games";
-    }
+    } // proceed
 
     /**
      * Maps the recommendation page to the html.

@@ -50,7 +50,7 @@ public class GameDAO {
      * A method to return a list of all the games that the user wants to see
      * based off of their console and genre of choice.
      *
-     * @param genreConsole An object that contains the genre and console specified by the user in search.html
+     * @param genre An object that contains the genre and console specified by the user in search.html
      * @return list A list of the parsed games.
      */
 
@@ -61,6 +61,13 @@ public class GameDAO {
 
         return list;
     }
+
+    /**
+     * A method to return the list of games that corresponds with the user's preferred genre.
+     *
+     * @param genreConsole the genreconsole that contains both datas
+     * @return list a list of games that contains both specified genre and console
+     */
 
     public List<Game> list(GenreConsole genreConsole){
 

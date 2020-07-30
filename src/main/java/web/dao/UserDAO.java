@@ -16,7 +16,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import web.model.GenreConsole;
-import web.model.Publisher;
 import web.model.User;
 
 /************************************************************************************
@@ -41,12 +40,5 @@ public class UserDAO {
         String query = "INSERT INTO `user` (`userId`,`userName`,`Genre_genreId`,`password`,`role`,`enabled`) VALUES (?,?,?,?,?,?)";
 
         return jdbcTemplate.update(query,num,user.getUserName(),user.getGenre_genreId(),user.getPassword(),"ROLE_USER",1);
-    }
-
-    public User findUser(User user){
-        String query = "Select * from 'user' where userName = ?";
-
-        return  (User) jdbcTemplate.query(query,new Object[]{user.getUserName()}, BeanPropertyRowMapper.newInstance(Publisher.class)); //jdbctemplate maps the result and stores a class as a bean which can be accessed by the webpage
-
     }
 }
