@@ -26,33 +26,22 @@
             </li>
         </ul>
     </div>
-    <button type="button" class="btn btn-light">
-        <a class="nav-link" href="/login">Login</a>
-    </button>
 </nav>
-
-<div align="center">
-    <h1>Games</h1>
-    <a href="/new">Recommended Games</a>
-    <br/><br/>
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Genre</th>
-            <th>User Score</th>
-            <th>Release Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="game : ${games}">
-            <td th:text="${game.gameName}">Name</td>
-            <td th:text="${game.genre_genreId}">Genre</td>
-            <td th:text="${game.score}">Score</td>
-            <td th:text="${game.rDate}">Date</td>
-        </tr>
-        </tbody>
-    </table>
+<div class="d-flex justify-content-center" >
+    <form class="dropdown-menu p-4" th:action="@{/login}" method="post" th:object="${user}">
+        <div class="form-group">
+            <label for="user">Email address</label>
+            <input type="email" class="form-control" id="user" placeholder="database" th:field="${user.userName}">
+        </div>
+        <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" class="form-control" id="pass" placeholder="management" th:field="${user.password}">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
 </div>
+
+<a th:href="@{/register}">Register</a>
+
 </body>
 </html>

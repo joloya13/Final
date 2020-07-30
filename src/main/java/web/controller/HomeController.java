@@ -43,16 +43,6 @@ public class HomeController {
 
 //    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    /**
-     * This method maps to the html page.
-     *
-     * @return "index" A string to be matched with the html.
-     */
-
-    @RequestMapping("/")
-    public String index(){
-        return "register";
-    } // index
 
     /**
      * Maps the login page to the html.
@@ -60,8 +50,24 @@ public class HomeController {
      * @return "index" A string to be matched with the html
      * for logging in.
      */
+    @RequestMapping("/login")
+    public String login(Model model){
+        User user = new User();
+        model.addAttribute("user",user);
 
-    @RequestMapping("/register")
+        return "login";
+    }
+
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute("user") User user, Model model){
+        model.addAttribute("user",user);
+        if(userDAO.findUser(user) == null ) {
+            return "login";
+        }else return "search";
+    }
+
+    @RequestMapping(value={"", "/", "register"})
     public String register(Model model){
         User user = new User();
         model.addAttribute("user",user);
@@ -70,6 +76,7 @@ public class HomeController {
 
         return "register";
     } // login
+
 
     @PostMapping("/register")
     public String proceed(@ModelAttribute("user") User user, Model model){
