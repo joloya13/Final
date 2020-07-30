@@ -71,13 +71,23 @@ public class HomeController {
         return "register";
     } // login
 
+    /**
+     * This method will take the user to the register page where they can store their username,
+     * password, and favorite genre of video game.
+     *
+     * @param user The user object to store the data.
+     * @param model Data to be passed into the method with a method object.
+     * @return "games" The web link to the games that correspond with the
+     * user's preferred genre.
+     */
+
     @PostMapping("/register")
     public String proceed(@ModelAttribute("user") User user, Model model){
         System.out.println(user.getUserName());
         userDAO.InsertUser(user);
         model.addAttribute("games",gameDAO.list(user.getGenre_genreId()));
         return "games";
-    }
+    } // proceed
 
     /**
      * Maps the recommendation page to the html.
