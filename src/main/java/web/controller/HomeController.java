@@ -93,11 +93,21 @@ public class HomeController {
         model.addAttribute("genres",genreDAO.list());
         model.addAttribute("genreConsole", new GenreConsole());
         return "search";
-    }
+    } // search
+
+    /**
+     * This method is connected to search above. Search will obtain the queries from the user
+     * and pass them to recommendation, which will then produce a 'recommend' page that
+     * displays the results.
+     *
+     * @param genreConsole An object that contains the information stored gathered from the user.
+     * @param model Object that passes the data to the controller and database.
+     * @return "recommend" The name of the page that contains the results for the query
+     */
 
     @RequestMapping("/recommend")
     public String recommendation(@ModelAttribute("genreConsole") GenreConsole genreConsole, Model model){
-            System.out.println(genreConsole.getConsole());
+            // System.out.println(genreConsole.getConsole());
             model.addAttribute("games", gameDAO.list(genreConsole));
             model.addAttribute("genre", genreDAO.getGenre(genreConsole.getGenre()));
             return "recommend";
