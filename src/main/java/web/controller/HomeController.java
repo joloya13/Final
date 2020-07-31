@@ -61,10 +61,6 @@ public class HomeController {
         if(userDAO.findUser(user) < 1){
             return "login";
         }
-        /*model.addAttribute("consoles", consoleDAO.list());
-        model.addAttribute("genres",genreDAO.list());
-        model.addAttribute("genreConsole", new GenreConsole());
-        return "search";*/
         return search(model);
     } // proceed
 
