@@ -26,15 +26,10 @@
             </li>
         </ul>
     </div>
-    <button type="button" class="btn btn-light">
-        <a class="nav-link" href="/login">Login</a>
-    </button>
 </nav>
 
 <div align="center">
     <h1>Games</h1>
-    <a href="/new">Recommended Games</a>
-    <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
         <tr>
@@ -50,6 +45,9 @@
             <td th:text="${game.genre_genreId}">Genre</td>
             <td th:text="${game.score}">Score</td>
             <td th:text="${game.rDate}">Date</td>
+        </tr>
+        <tr th:switch="${#lists.size(games)}">
+            <span th:case="'0'">NO POSSIBLE RECOMMENDATIONS PICK ANOTHER COMBO!</span>
         </tr>
         </tbody>
     </table>
