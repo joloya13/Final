@@ -18,8 +18,6 @@ public class User {
     private int userId;
     private String userName;
     private String password;
-    private String role;
-    private int enabled;
     private int Genre_genreId;
 
     /**
@@ -89,45 +87,6 @@ public class User {
         this.password = password;
     } // setPassword
 
-    /**
-     * Getter method for role
-     *
-     * @return role The role of the user.
-     */
-
-    public String getRole() {
-        return role;
-    } // getRole
-
-    /**
-     * Setter method for role.
-     *
-     * @param role the role to be set
-     */
-
-    public void setRole(String role) {
-        this.role = role;
-    } // setRole
-
-    /**
-     * Getter method for Enabled
-     *
-     * @return enabled the enabled to be returned
-     */
-
-    public int getEnabled() {
-        return enabled;
-    } // getEnabled
-
-    /**
-     * Setter method for Enabled
-     *
-     * @param enabled The enabled to be set
-     */
-
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
-    } // setEnabled
 
     /**
      * Getter method for genre Id

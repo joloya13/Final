@@ -8,6 +8,7 @@ package web.dao;
  */
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import web.model.Console;
 import web.model.Game;
 import java.util.List;
 
@@ -34,11 +35,32 @@ public class UserDAO {
 
     public int InsertUser(User user){
         int max = 255;
-        int min = 1;
+        int min = 10;
 
         int num = (int)(Math.random()*((max-min)+1))+min;
-        String query = "INSERT INTO `user` (`userId`,`userName`,`Genre_genreId`,`password`,`role`,`enabled`) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO `user` (`userId`,`userName`,`Genre_genreId`,`password`) VALUES (?,?,?,?)";
 
-        return jdbcTemplate.update(query,num,user.getUserName(),user.getGenre_genreId(),user.getPassword(),"ROLE_USER",1);
+        return jdbcTemplate.update(query,num,user.getUserName(),user.getGenre_genreId(),user.getPassword());
     }
+
+    public int findUser(User user){
+        String q = "Select * from user where userName  = ?"; //String query
+
+        List<User> f =  jdbcTemplate.query(q,new Object[]{user.getUserName()}, BeanPropertyRowMapper.newInstance(User.class));
+
+        if(f.size() == 0) return 0;
+
+        User s = f.get(0);
+
+        System.out.println(s.getPassword());
+
+        if(s == null) return 0;
+        System.out.println("past null");
+        if(user.getPassword().equals(s.getPassword())){
+            return 1;
+        }
+        System.out.println("password didnt match");
+        return 0;
+    }
+
 }

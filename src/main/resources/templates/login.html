@@ -27,11 +27,11 @@
         </ul>
     </div>
 </nav>
-<div class="d-flex justify-content-center" >
-    <form class="dropdown-menu p-4" th:action="@{/login}" method="post" th:object="${user}">
+<div class="row justify-content-md-center">
+    <form  th:action="@{/login}" method="post" th:object="${user}">
         <div class="form-group">
             <label for="user">Email address</label>
-            <input type="email" class="form-control" id="user" placeholder="database" th:field="${user.userName}">
+            <input type="text" class="form-control" id="user" placeholder="database" th:field="${user.userName}">
         </div>
         <div class="form-group">
             <label for="pass">Password</label>
@@ -40,8 +40,5 @@
         <button type="submit" class="btn btn-primary">Sign in</button>
     </form>
 </div>
-
-<a th:href="@{/register}">Register</a>
-
 </body>
 </html>
